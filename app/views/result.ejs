@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Token</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <style>
+         .title h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 43px;
+            color: steelblue;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 16px 0 0 0;
+            
+        }  
+        .container {
+            width: 600px;
+            margin: 34px auto -34px;
+            border: 1px solid rgb(235, 238, 241);
+            padding: 10px;
+            box-shadow: 5px 5px lightblue;
+        } 
+    </style>
+    <body>
+        <div class="title">
+            <h1>Data submitted</h1>
+        </div> 
+        <div class="container">
+            <h2>Click here to activate user!</h2>
+            <h2>Activate token :</h2>
+             
+       
+       <% var result=result || null; %>
+       <% if(result){%>
+        <h2><a href="/verify/<%= token %>"><%= token %></a></h2>
+       <% } %>
+    </div>
+    </body>
+</html>

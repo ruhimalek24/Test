@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Execute Query</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            background-color: beige;
+        }
+        #go {
+            margin: 10px;
+            padding: 8px;
+            font-size: 18px;
+            background-color: lightgoldenrodyellow;
+        }
+        #area{
+            background-color: rgb(147, 198, 240);
+            font-size: 20px;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+            padding: 10px;
+            background-color: lightcyan;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-left: 500px;
+        }
+
+        .number {
+            font-size: 18px;
+        }
+
+        .btn {
+            padding: 5px;
+            font-size: 16px;
+            background-color: lightcyan;
+            border-radius: 5px;
+        }
+
+        .cont {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="2">
+            <table>
+                <tr>
+                    <td>Table 1</td>
+                    <td>student_master</td>
+                </tr>
+                <tr>
+                    <td>Table 2</td>
+                    <td>exam_table</td>
+                </tr>
+                <tr>
+                    <td>Table 3</td>
+                    <td> attendance_table</td>
+                </tr>
+            </table>
+        </div>
+        <div class="1">
+        <center>
+            <h2>Insert Query</h2>
+            <form action="/task11" method="post">
+
+                <textarea name="text" id="area" rows="8" cols="40"><%= query %></textarea><br>
+                <input type="submit" id="go">
+            </form>
+        </center>
+    </div>
+    </div>
+   
+
+        <h2 style="text-align: center;">Result</h2>
+        <center>
+        
+        <table>
+            <% var result=result || null; %>
+                <% if(result){%>
+                    <% if (Array.isArray(result)){%>
+                        
+                       <tr>
+                       
+                        <% head.forEach(i => { %>
+                            <th>
+                                <%= i %>
+                            </th>
+                        <%})%>
+                       
+                       </tr>
+
+                       <% result.forEach(i => { %>
+                            <tr>
+                                <% Object.values(i).forEach(i=> {%>
+                                    <td>
+                                        <%= i %>
+                                    </td>
+                                    <%})%>
+                            </tr>
+                                <%})%>
+                            
+                                <%}%>
+                                    <%}%>
+        </table>
+    </center>
+</body>
+
+</html>

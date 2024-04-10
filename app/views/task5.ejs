@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delimeter Search</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #text {
+            width: 600px;
+            height: 40px;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        body{
+            background-color: lightcyan;
+        }
+
+        .do {
+            font-size: 18px;
+            padding: 5px;
+        }
+        .hdo{
+            background-color: lightgray;
+            font-size: 20px;
+        }
+        .go{
+            font-size: 18px;
+            padding: 5px;
+            background-color: lightgoldenrodyellow;
+            border-radius: 8px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h2>
+        Name : Ruhi Malek | Id : 24DEV050
+    </h2>
+    
+    <center>
+        <form action="/execute" method="post">
+            <input type="text" name="text" id="text" placeholder="Enter string">
+            <input type="submit" class="go" value="Go">
+        </form>
+        <table id="one">
+            <h2>Delimeter Search</h2>
+            <tr>
+                <td class="do">Student Id</td>
+                <td class="do">_</td>
+            </tr>
+            <tr>
+                <td class="do">First name</td>
+                <td>^</td>
+            </tr>
+            <tr>
+                <td class="do">Last name</td>
+                <td class="do">$</td>
+            </tr>
+            <tr>
+                <td class="do">Age</td>
+                <td class="do">:</td>
+            </tr>
+            <tr>
+                <td class="do">City</td>
+                <td class="do">(</td>
+            </tr>
+            <tr>
+                <td class="do">Email</td>
+                <td class="do">}</td>
+            </tr>
+            <tr>
+                <td class="do">Semester</td>
+                <td class="do">[</td>
+            </tr>
+        </table>
+    </center>
+
+    <center>
+    <table>
+        
+        <div class="th">
+        <% var result=result || null; %>
+            <% if(result){%>
+                <% if (Array.isArray(result)){%>
+
+                    <tr>
+
+                        <% head.forEach(i=> { %>
+                            <th class="hdo">
+                                <%= i.name %>
+                            </th>
+                            <%})%>
+
+                    </tr>
+                </div>
+                <div class="tbd">
+                    <% result.forEach(i=> { %>
+                        <tr>
+                            <% Object.values(i).forEach(i=> {%>
+                                <td class="do">
+                                    <%= i %>
+                                </td>
+                                <%})%>
+                        </tr>
+                        <%})%>
+
+                            <%}%>
+                                <%}%>
+                                    <% if(result.length===0){ %>
+                                        <tr>
+                                            <td class="do">NO DATA FOUND</td>
+                                        </tr>
+                                        <%}%>
+                                    </div>
+    </table>
+</center>
+</body>
+
+</html>

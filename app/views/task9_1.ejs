@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1{
+            text-align: center;
+        }
+
+    table,
+    th,
+    td {
+        margin-top: 1px;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 5px;
+        font-size: 20px;
+        border: 1px solid lightgray;
+
+    }
+
+    th {
+        /* background-color: lightcyan; */
+        width: 100px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <center>
+    <table>
+        <h1>Result</h1>
+        <% var ex1=result[0]; 
+        var ex2=result[1]; 
+        var ex3=result[2]; 
+        let c = 0;
+        let p = 0;
+        %>
+        <tr>
+            <th colspan="2">Student name</th>
+            <td colspan="6"><%= ex1[0].fname %> </td>
+        </tr>
+        <tr>
+            <th colspan="2">Student id</th>
+            <td colspan="6"><%= ex1[0].student_id %> </td>
+        </tr>
+      
+        <tr>
+            <th rowspan="2">Subject name</th>
+            <th colspan="2">Prelime</th>
+            <th colspan="2">Terminal</th>
+            <th colspan="2">External</th>
+            <th rowspan="2">Total</th>
+
+        </tr>
+        <tr>
+            <th>Practical</th>
+            <th>Theory</th>
+            <th>Practical</th>
+            <th>Theory</th>
+            <th>Practical</th>
+            <th>Theory</th>
+            
+
+        </tr>
+       
+        <tr>      
+            <% for(let i=0 ; i < ex1.length ; i++) {%>
+        
+                    <td>
+                        <%= ex1[i].subject_id %>
+                    </td>
+            <td>
+                <%= ex1[i].practical %>
+            </td>
+            <td>
+                <%= ex1[i].theory %>
+            </td>
+            <td>
+                <%= ex2[i].practical %>
+            </td>
+            <td>
+                <%= ex2[i].theory %>
+            </td>
+            <td>
+                <%= ex3[i].practical %>
+            </td>
+            <td>
+                <%= ex3[i].theory %>
+            </td>
+            <td>
+                <%= ex1[i].practical + ex1[i].theory + ex2[i].practical + ex2[i].theory + ex3[i].practical + ex3[i].theory %>
+            </td>
+           <% 
+           c += ex1[i].practical + ex1[i].theory + ex2[i].practical + ex2[i].theory + ex3[i].practical + ex3[i].theory;
+            
+           p = ((c * 100)/1300);
+            %>
+        </tr>
+        <%}%> 
+        
+        <tr>
+            <td colspan="7">
+                Total
+            </td>
+            <td>
+                <%= c %>
+            </td>
+            
+        </tr>
+        <tr>
+            <td colspan="7">
+                Percentage
+            </td>
+            <td>
+                <%= p.toFixed(2) %>%
+            </td>            
+        </tr>    
+    </table>
+</center>
+    <script>
+
+    </script>
+</body>
+
+</html>
+
+

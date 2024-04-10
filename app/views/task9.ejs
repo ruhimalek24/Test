@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <style>
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-left: 500px;
+        }
+
+        .number {
+            font-size: 20px;
+        }
+
+        .btn {
+            padding: 5px;
+            font-size: 16px;
+            background-color: lightcyan;
+            border-radius: 5px;
+        }
+
+        table,
+    th,
+    td {
+        margin-top: 10px;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 3px;
+        font-size: 18px;
+
+    }
+
+    th {
+        background-color: lightcyan;
+        width: 200px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Student's Exam data</h1>
+    <div class="container">
+
+        <button class="btn" id="beg" onclick="beg()">
+            << </button>
+
+                <button class="btn" id="back" onclick="back()">
+                    < </button>
+
+                        <div class="no">
+                            <span class="number" id="number">
+                                <%= page %>
+                            </span>
+                        </div>
+
+                        <button class="btn" id="next" onclick="next()"> > </button>
+
+                        <button class="btn" id="end" onclick="end()"> >> </button>
+
+    </div>
+    <center>
+    <table>
+        <tr>
+            <th rowspan="2">Student name</th>
+            <th colspan="2">Prelime</th>
+            <th colspan="2">Terminal</th>
+            <th colspan="2">External</th>
+            <th rowspan="2">Total</th>
+            <th rowspan="2"></th>
+        </tr>
+        <tr>
+
+
+            <th>Practical</th>
+            <th>Theory</th>
+            <th>Practical</th>
+            <th>Theory</th>
+            <th>Practical</th>
+            <th>Theory</th>
+            
+
+        </tr>
+        <tbody>
+            <% var sql1=result[0]; var sql2=result[1]; var sql3=result[2]; %>
+                <% for(let i=0 ; i < sql1.length ; i++) {%>
+                    <tr>
+                        <td>
+                            <%= sql1[i].fname %>
+                        </td>
+                        <td>
+                            <%= sql1[i].practical %>
+                        </td>
+                        <td>
+                            <%= sql1[i].theory %>
+                        </td>
+                        <td>
+                            <%= sql2[i].practical %>
+                        </td>
+                        <td>
+                            <%= sql2[i].theory %>
+                        </td>
+                        <td>
+                            <%= sql3[i].practical %>
+                        </td>
+                        <td>
+                            <%= sql3[i].theory %>
+                        </td>
+                        <td>
+                            <%= sql1[i].practical + sql1[i].theory + sql2[i].practical + sql2[i].theory + sql3[i].practical + sql3[i].theory %>
+                        </td>
+                        <td>
+                            <button id="detailbtn" onclick="details('<%= sql1[i].student_id %>')">Details</button>
+                        </td>
+                        <%}%>
+                    </tr>
+        </tbody>
+    </table>
+</center>
+    <script>
+        var begbtn = document.getElementById("beg");
+        var endbtn = document.getElementById("end");
+        var backButton = document.getElementById("back");
+        var nextButton = document.getElementById("next");
+        var number = document.getElementById("number");
+        var cityacc = document.getElementById("cityacc");
+
+        var i = 1;
+
+        function ready() {
+            backButton.disabled = true;
+        }
+
+        function next() {
+            let pg = <%= page %> ;
+            pg++;
+            if (pg == 10) {
+                nextButton.disabled = true;
+            }
+            backButton.disabled = false;
+            number.innerHTML = pg;
+            loaddata(pg);
+            return pg;
+        }
+
+        function back() {
+            let pg = <%= page %> ;
+            pg--;
+            if (pg <= 1) {
+                backButton.disabled = true;
+            }
+            nextButton.disabled = false;
+            number.innerHTML = pg;
+            loaddata(pg);
+
+        }
+
+        function beg() {
+            // console.log(1);
+            let pg = <%= page %> ;
+            if (pg == 1) {
+                backButton.disabled = true;
+            }
+            pg = 1;
+            number.innerHTML = pg;
+            nextButton.disabled = false;
+            loaddata(pg);
+
+        }
+
+        function end() {
+            let pg = <%= page %> ;
+            if (pg == 10) {
+                nextButton.disabled = true;
+            }
+            pg = 10;
+            document.getElementById('number').innerHTML = 10;
+            nextButton.disabled = true;
+            loaddata(pg);
+
+        }
+        function loaddata(pg) {
+            window.location.href = '/task9?page='+pg ;
+        }
+        function details(id){
+            
+            window.location.href = '/task9_1/details?page=1&id=' + id;
+        }
+
+       
+    </script>
+</body>
+
+</html>

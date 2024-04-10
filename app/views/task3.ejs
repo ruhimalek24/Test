@@ -1,0 +1,128 @@
+<!DOCTYPE <!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kuku Cube</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+
+    </style>
+</head>
+
+<body bgcolor="lightcyan" ;>
+    <h3>Name : Ruhi Malek | Employee Id : 24DEV050</h3>
+   
+    <center>
+
+        <h3 id="score">Score : </h3><br>
+        <button id="start" onclick="setTimeout(timer,5000);startCountdown(5);">Start</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <p id="seconds_dis">TIMER : </p><br><br>
+
+        <table id="tbl" border="5px solid white" style="height: 300px;width: 350px;;">
+            <tr id="tr">
+                <td id="terget">
+
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </center>
+    <script>
+        // var click = document.getElementsByTagName("table").onclick = click_eve();
+        var table = document.getElementById("tbl");
+        var tbl_row = document.getElementsByTagName("tr");
+        var tbl_td = document.getElementsByTagName("td");
+        var cells = table.getElementsByTagName("td");
+        var score = 0;
+
+        function add_row() {
+            var row = document.getElementById("tr");
+            var table = document.getElementById("tbl");
+            var clone = row.cloneNode(true);
+            table.appendChild(clone);
+
+
+        }
+        function add_col() {
+            var table = document.getElementById("tbl");
+            for (let i = 0; i < table.rows.length; i++) {
+                let r = table.rows[i];
+                r.insertCell(0);
+            }
+        }
+        function click_eve() {
+            add_row();
+            add_col();
+
+            main();
+
+            score++;
+
+            document.getElementById('score').innerText = 'Score : ' + score;
+        }
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+
+
+
+        function main() {
+            x = Math.floor(Math.random() * 256);
+            y = Math.floor(Math.random() * 256);
+            z = Math.floor(Math.random() * 256);
+
+            node = Math.floor((Math.random() * 100) % cells.length - 1);
+            let node_cell = cells[node];
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].style.background = "rgb(" + x + "," + y + "," + z + ")";
+                cells[i].style.opacity = "1.0";
+            }
+            node_cell.style.opacity = '0.5';
+            node_cell.style.backgroundColor = "rgb(" + x + "," + y + "," + z + ")";
+            node_cell.addEventListener('click', click_eve);
+
+
+
+        }
+        
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].style.background = "rgb(" + x + "," + y + "," + z + ")";
+        }
+        let node = Math.floor((Math.random() * 100) % cells.length - 1);
+        let node_cell = cells[node];
+        node_cell.style.opacity = '0.5';
+        node_cell.addEventListener('click', click_eve);
+
+        node_cell.style.backgroundColor = "rgb(" + x + "," + y + "," + z + ")";
+
+        function timer() {
+            // setTimeout(alert("GAME OVER"),3000);
+            alert("GAME OVER");
+        }
+        function startCountdown(seconds) {
+            let counter = seconds;
+
+            const interval = setInterval(() => {
+                document.getElementById('seconds_dis').innerText = 'TIMER :' + counter;
+                // console.log(counter);
+                counter--;
+
+                if (counter < 0) {
+                    clearInterval(interval);
+
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

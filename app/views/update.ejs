@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Job Application form</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <style>
+        body {
+            font-size: 20px;
+
+        }
+
+        .t1 {
+            width: 70%;
+            padding: 20px;
+            border-spacing: 10px;
+        }
+
+        .head {
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .checkinput[type=checkbox] {
+            vertical-align: middle;
+            position: relative;
+            /* bottom: 1px; */
+
+        }
+
+        .checklabel {
+            display: block;
+            height: 10px
+        }
+
+        input {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .t1 {
+            background-color: rgb(224, 234, 247);
+        }
+
+        .btn {
+            margin-top: 10px;
+            margin-left: 38%;
+            gap: 50px;
+            display: flex;
+        }
+
+        td {
+            padding-top: 20px;
+        }
+
+        #form4 {
+            height: 20%;
+        }
+
+        #form5 {
+            height: 1%;
+        }
+
+        #prevbtn {
+            font-size: 20px;
+            padding: 8px;
+            border-radius: 10px;
+            background-color: rgb(115, 160, 209);
+        }
+
+        #smtbtn {
+            font-size: 18px;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: rgb(115, 160, 209);
+        }
+
+
+        #nxtbtn {
+            font-size: 20px;
+            padding: 8px;
+            border-radius: 10px;
+            background-color: rgb(115, 160, 209);
+        }
+    </style>
+
+    <h2 style="text-align: center;text-decoration: underline;">Job-Application Form</h2>
+
+    <form action="/ans" method="post">
+        <div class="cont">
+
+            <% var per=result[0]; var edu=result[1]; var exp=result[2]; var ref=result[3]; var pref=result[4]; %>
+                <div id="form1">
+                    <p class="head">Basic Details : </p>
+
+                    <center>
+                        <table class="t1">
+                            <tr>
+                                <% per.forEach(function (i){ %>
+                                    <td class="r1">
+
+                                        <label for="id">I'd</label><br>
+                                        <input type="text" id="id" name="personId" value="<%= id %>">
+
+                                    </td>
+                                    <td class="r1">
+                                        <label for="fName">First name:</label><br>
+                                        <input type="text" id="fname" name="fName" value="<%= i.fName %>">
+                                    </td>
+                                    <td>
+                                        <label for="lName">Last name:</label>
+                                        <input type="text" id="lname" name="lName" value="<%= i.lName %>">
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="designation">Designation:</label>
+                                    <input type="text" name="designation" value="<%= i.designation %>">
+
+                                </td>
+
+                                <td>
+                                    <label for="add1">Addresss 1:</label>
+                                    <input type="text" id="add1" name="address1" value="<%= i.address1 %>">
+
+                                </td>
+                                <td>
+                                    <label for="email">Email:</label><br>
+                                    <input type="text" id="email" name="email" value="<%= i.email %>">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="add2">Address 2:</label>
+                                    <input type="text" id="add2" name="address2" value="<%= i.address2 %>">
+
+                                </td>
+                                <td>
+                                    <label for="phone">Phone Number:</label>
+                                    <input type="text" id="phnum" name="mobileNo" value="<%= i.mobileNo %>">
+
+                                </td>
+
+
+                                <td>
+                                    <label for="city">City:</label><br>
+                                    <input type="text" id="city" name="city" value="<%= i.city %>">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="gender">Gender:</label><br>
+                                    <select name="gender" id="gender">
+                                        <option value="<%= i.gender %>">
+                                            <%= i.gender %>
+                                        </option>
+                                        <option value="male">male</option>
+                                        <option value="female">female</option>
+                                        <option value="other">other</option>
+                                    </select>
+
+                                </td>
+
+                                <td>
+                                    <label for="state">State :</label><br>
+                                    <input type="text" id="state" name="state" value="<%= i.state %>">
+
+                                </td>
+                                <td>
+                                    <label for="zipcode">Zip code:</label>
+                                    <input type="text" id="zipcode" name="zipcode" value="<%= i.zipcode %>">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="relationship">Relationship:</label><br>
+                                    <select name="relationship_status" id="relationship">
+                                        <option value="<%= i.relationship_status %>">
+                                            <%= i.relationship_status %>
+                                        </option>
+                                        <option value="single">single</option>
+                                        <option value="married">married</option>
+                                        <option value="seperate">seperate</option>
+                                    </select>
+
+                                </td>
+                                <td>
+                                    <label for="birthday">Birthday:</label><br>
+                                    <input type="text" id="birthday" name="date_of_birth"
+                                        value="<%= i.date_of_birth %>">
+
+                                </td>
+                                <% }) %>
+                            </tr>
+                        </table>
+                    </center>
+                </div>
+                <div id="form2">
+                    <p class="head">Educational Details : </p>
+
+                    <center>
+                        <table style="width: 80%;" class="t1">
+
+                            <tr>
+                                <% edu.forEach(function (i){ %>
+                                    <td>
+                                        <label for="degree">Degree:</label><br>
+                                        <select name="degree" id="degree">
+                                            <option value="<%= i.degree %>">
+                                                <%= i.degree %>
+                                            </option>
+                                            <option value="SSC">SSC</option>
+                                            <option value="HSC">HSC</option>
+                                            <option value="bachelor">Bachelor</option>
+                                            <option value="master">Master</option>
+                                        </select><br>
+
+                                    </td>
+                                    <td>
+                                        <label for="board">Board/University:</label>
+                                        <input type="text" id="board" name="board_OR_University"
+                                            value="<%= i.board_OR_University %>"><br>
+
+                                    </td>
+                                    <td>
+                                        <label for="passingyear">Passing Year:</label>
+                                        <input type="text" id="passingyear" name="passingyear"
+                                            value="<%= i.passingyear %>"><br>
+
+                                    </td>
+                                    <td>
+                                        <label for="percentage">Percentage:</label>
+                                        <input type="text" id="percentage" name="percentage"
+                                            value="<%= i.percentage %>"><br>
+
+                                    </td>
+                                    <td>
+                                        <label for="courseName">Course name:</label>
+                                        <input type="text" id="courseName" name="courseName"
+                                            value="<%= i.courseName %>"><br>
+
+                                    </td>
+                                    <br><br>
+                            </tr>
+                            <% }) %>
+
+                        </table>
+                    </center>
+                </div>
+                <div id="form3">
+                    <p class="head">Work Experience : </p>
+
+                    <center>
+                        <table style="width: 80%;" class="t1">
+                            <tr>
+                                <% exp.forEach(function (i){ %>
+                                    <td>
+                                        <label for="company">Company name:</label><br>
+                                        <input type="text" id="company" name="companyName" value="<%= i.companyName %>">
+                                    </td>
+                                    <td>
+                                        <label for="designation1_3">Designation:</label><br>
+                                        <input type="text" id="designation1_3" name="designation_exp"
+                                            value="<%= i.designation_exp %>">
+                                    </td>
+                                    <td>
+                                        <label for="startdate">From:</label><br>
+                                        <input type="text" id="startdate" name="startDate" value="<%= i.startDate %>">
+                                    </td>
+                                    <td>
+                                        <label for="enddate">To:</label><br>
+                                        <input type="text" id="enddate" name="endDate" value="<%= i.endDate %>">
+                                    </td>
+                                    <br><br>
+
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </center>
+                </div>
+                <div id="form4">
+                    <p class="head">Language known : </p>
+                    <center>
+                        <table class="t1">
+                            <tr>
+
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox" name="language[]" value="hindi"
+                                            id="lan1">
+                                        Hindi
+                                    </label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+
+                                </td>
+                                <div class="check">
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="hindi[]">
+                                            Read
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="hindi[]">
+                                            Write
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="hindi[]">
+                                            Speak
+                                        </label>
+                                    </td> <br><br>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox" name="language[]" value="english">
+                                        English
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <div class="check">
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="english[]">
+                                            Read
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="english[]">
+                                            Write
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="english[]">
+                                            Speak
+                                        </label> <br><br>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox" name="language[]" value="gujarati">
+                                        Gujarati
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <div class="check">
+                                    <td>
+
+                                        <label>
+                                            <input type="checkbox" name="gujarati[]">
+                                            Read
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="gujarati[]">
+                                            Write
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" name="gujarati[]">
+                                            Speak
+                                        </label>
+                                    </td>
+                                </div>
+
+                            </tr>
+                        </table>
+                    </center>
+                </div>
+
+                <div id="form5">
+                    <p class="head">Technologies you know : </p>
+                    <center>
+                        <table class="t1">
+                            <tr>
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox">
+                                        Java
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="radio" id="beginer" value="beginer">
+                                      <label for="beginer">Beginer</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="mideator" value="mideator">
+                                      <label for="mideator">Mideator</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="expert" value="expert">
+                                      <label for="expert">Expert</label><br><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox">
+                                        Python
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="radio" id="beginer" value="beginer">
+                                      <label for="beginer">Beginer</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="mideator" value="mideator">
+                                      <label for="mideator">Mideator</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="expert" value="expert">
+                                      <label for="expert">Expert</label>
+                                </td><br><br>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox">
+                                        DS
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="radio" id="beginer" value="beginer">
+                                      <label for="beginer">Beginer</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="mideator" value="mideator">
+                                      <label for="mideator">Mideator</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="expert" value="expert">
+                                      <label for="expert">Expert</label><br><br>
+                                    <label class="checklabel">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="checkinput" type="checkbox">
+                                    .Net
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="radio" id="beginer" value="beginer">
+                                      <label for="beginer">Beginer</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="mideator" value="mideator">
+                                      <label for="mideator">Mideator</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="expert" value="expert">
+                                      <label for="expert">Expert</label>
+                                </td><br><br>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="checklabel">
+                                        <input class="checkinput" type="checkbox">
+                                        Mysql
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="radio" id="beginer" value="beginer">
+                                      <label for="beginer">Beginer</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="mideator" value="mideator">
+                                      <label for="mideator">Mideator</label>
+                                </td>
+                                <td>
+                                      <input type="radio" id="expert" value="expert">
+                                      <label for="expert">Expert</label>
+                                </td><br><br>
+                            </tr>
+
+                        </table>
+                    </center>
+                </div>
+                <div class="form6">
+                    <p class="head">Reference contact: </p>
+
+                    <center>
+                        <table class="t1">
+                            <% ref.forEach(function (i){ %>
+                                <tr>
+                                    <td>
+                                        <label for="name">Name:</label><br>
+                                        <input type="text" id="name" name="reference_contactName"
+                                            value="<%= i.reference_contactName %>">
+                                    </td>
+                                    <td style="padding-left: 10px;">
+                                        <label for="contactno">Contact Number:</label><br>
+                                        <input type="text" id="contactno" name="reference_mobileno"
+                                            value="<%= i.reference_mobileno %>">
+                                    </td>
+                                    <td style="padding-left: 10px;">
+                                        <label for="relation">Relaton:</label><br>
+                                        <input type="text" id="relation" name="relation" value="<%= i.relation %>">
+                                    </td>
+
+                                </tr>
+                                <% }) %>
+                        </table>
+                    </center>
+                </div>
+                <div id="form7">
+                    <p class="head">Preference : </p>
+
+                    <center>
+                        <table class="t1">
+                            <% pref.forEach(function (i){ %>
+                                <tr>
+
+                                    <td>
+                                        <label for="location">Prefered Location</label>
+                                        <textarea id="location" name="prefered_location" rows="5" cols="8">
+                            <%= i.prefered_location %>
+                    </textarea>
+                                    </td>
+                                    <td style="padding: 10px;">
+                                        <label for="notice">Notice period:</label>
+                                        <input type="text" id="notice" name="notice_period"
+                                            value="<%= i.notice_period %>">
+                                    </td>
+                                    <td style="padding: 10px;">
+                                        <label for="expected">Expected CTC:</label>
+                                        <input type="text" id="expected" name="expected_CTC"
+                                            value="<%= i.expected_CTC %>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+
+                                    <td>
+                                        <label for="current">Current CTC:</label>
+                                        <input type="text" id="current" name="current_CTC" value="<%= i.current_CTC %>">
+                                    </td>
+                                    <td style="padding: 10px;">
+                                        <label>Department </label>
+                                        <select name="deprtment" id="department">
+                                            <option value="<%= i.deprtment %>">
+                                                <%= i.deprtment %>
+                                            </option>
+                                            <option value="design">Design</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="qa">QA</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </table>
+                    </center>
+                    <div class="btn">
+                        <div class="smt">
+                            <input type="submit" value="Update">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        </div>
+    </form>
+    <div class="btn">
+        <div class="prev">
+            <input type="button" id="prevbtn" value="<<" onclick="prevform()">
+        </div>
+
+        <div class="nxt">
+            <input type="button" id="nxtbtn" value=">>" onclick="nextform()">
+        </div>
+    </div>
+
+
+</body>
+<script>
+
+    let currentIndex = 0;
+
+    const formdiv = document.querySelectorAll('.cont > div');
+
+
+    function hide() {
+        formdiv.forEach(i => {
+            i.style.display = 'none';
+        })
+    }
+
+    function show(index) {
+        hide();
+        formdiv[index].style.display = 'block';
+    }
+
+    show(currentIndex);
+
+    function nextform() {
+        if (currentIndex < formdiv.length - 1) {
+            currentIndex++;
+            show(currentIndex);
+        }
+    }
+
+    function prevform() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            show(currentIndex);
+        }
+    }
+
+    const form = document.getElementById('form');
+    form.addEventListener("submit", async (event) => {
+        const formData = new formData(form);
+        const url = form.action;
+        try {
+            const response = await fetch(url, {
+                method: 'post',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(FormData)
+            });
+            const result = await response.json();
+            console.log(result);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Searching</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .txtbx{
+                height: 40px;
+                width: 150px;
+            }   
+            #id{
+                font-size: 18px;
+                padding: 8px;
+            } 
+            th{
+                background-color: lightcyan;
+            }
+            th,tr,td{
+                padding: 5px;
+                border: 1px solid lightgray;
+                border-collapse: collapse;
+                font-size: 20px;
+            } 
+            table{
+                margin-left: 70px;
+                margin-top: 20PX;
+            }
+            .form{
+                margin-left: 220px;
+                margin-top: 50PX;
+            }
+            .txtbx{
+                font-size: 16px;
+            }
+            .boom{
+                background-color: lightcyan;
+            }
+               
+        </style>
+    </head>
+    <body>
+        <div class="form">
+       <form action="/display" method="post" style="gap: 10px;">
+        <input type="text" placeholder="Enter student id EX. 101" name="txt" class="txtbx" autofocus>
+
+        <input type="button" class="boom" id="Moreitems" onclick="getbtn()" value="more" style="font-size: 16px;padding: 5px;border-radius: 5px;">
+
+        <input type="text" placeholder="Enter student name EX. Binny" id="1" name="txt1" class="txtbx" onclick="getName(value)" style="display: none;">
+
+        <input type="text" placeholder="Enter student name EX. Atlanta" id="2" name="txt2" class="txtbx" onclick="getCity(value)" style="display: none;">
+
+        <input type="text" placeholder="AND/OR" name="txt3" id="3" class="txtbx" onclick="andOr(value)" style="display: none;">
+
+        <input type="submit" class="boom" id="search" onclick="getId(value)" value="Search" style="font-size: 16px;padding: 5px;border-radius: 5px;">
+    </form>
+</div>
+       <table>
+       
+        <% var result=result || null; %>
+            <% if(result){%>
+                <% if (Array.isArray(result)){%>
+                    
+                   <tr>
+                   
+                    <% head.forEach(i => { %>
+                        <th>
+                            <%= i.name %>
+                        </th>
+                    <%})%>
+                   
+                   </tr>
+                   
+                   <% result.forEach(i => { %>
+                        <tr>
+                            <% Object.values(i).forEach(i=> {%>
+                                <td>
+                                    <%= i %>
+                                </td>
+                                <%})%>
+                        </tr>
+                            <%})%>
+                        
+                            <%}%>
+                                <%}%>
+            <% if(result.length === 0){ %>
+                <tr>
+                    <td>NO DATA FOUND</td>
+                </tr>
+            <%}%>
+    </table>
+        
+        <script>
+            function getbtn(){
+                document.getElementById('1').style.display = 'inline';
+                document.getElementById('2').style.display = 'inline';
+                document.getElementById('3').style.display = 'inline';
+            }
+            function getId(id){
+                window.location.href = `/?id=${id}`;
+            }    
+            function getName(name){
+                window.location.href = `/?id = ` + id + `name=${name}`;
+            } 
+            function getCity(city){
+                window.location.href = `/?id = ` + id + `city=${city}`;
+            }
+            function andOr(andOr){
+                window.location.href = `/?id = ` + id + `andOr=${andOr}`;
+            }        
+        </script>
+    </body>
+</html>

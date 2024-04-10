@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Conerted Timezone</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    body{
+        margin: 7%;
+        padding: 10px;
+    }
+    #dp{
+        font-size: 22px;
+        font-weight: bold;
+    }
+    #timezone , #result{
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid steelblue;
+        font-size: 20px;
+        background-color: lightcyan;
+    }
+    
+    form{
+        border: 2px solid steelblue;
+        padding: 30px;
+        width: 50%;
+        margin-left: 20%;
+        border-radius: 8px;
+        background-color: lightcyan;
+    }
+   </style>
+
+
+<body>
+    <% var result=result || null; %>
+
+        <form method="post" action="/task6_1">
+            <p id="dp">Local Date : </p>
+            <p id="dp">Time zone : <input type="text" id="timezone" name="timezone" value="<%= timez %>"></p>
+            <p id="dp">Time : <input type="text" id="result" value="<%= result %>"></p>
+            
+        </form>
+
+        <script>
+            let date = new Date();
+            document.getElementById('dp').innerText += date;
+        </script>
+</body>
+
+</html>

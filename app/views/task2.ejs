@@ -1,0 +1,70 @@
+<!DOCTYPE <!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dynamic Table</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        
+        tr:nth-child(even) td:nth-child(odd){
+            background-color: pink;
+        }
+        tr:nth-child(odd) td:nth-child(even){
+            background-color: lightblue;
+        }
+       
+    </style>
+</head>
+
+<body style="background-color: lightcyan;">
+    <h3>Name : Ruhi Malek</h3>
+    <h3>Employee Id : 24DEV050</h3>
+<center>    <button id="btn_col" onclick="add_col()">Add Column</button>
+    <button id="btn_red_col" onclick="col_red_eve()">Delete Column</button>
+    <table id="tbl" border="1" style="border-collapse: collapse;width:30%;height:50%;">
+        <tr id="tr">
+            <td id="c"></td>
+            <td id="r"></td>
+        </tr>
+        <tr>
+            <td id="c"></td>
+            <td id="r"></td>
+        </tr>
+    </table>
+
+
+    <button id="btn_row" onclick="add_row()">Add Row</button>
+    <button id="btn_del_eve" onclick="btn_del_eve()">Delete Row</button>
+</center>
+    <script>
+        function add_row() {
+            var row = document.getElementById("tr");
+            var table = document.getElementById("tbl");
+            var clone = row.cloneNode(true);
+            table.appendChild(clone);
+        }
+        function btn_del_eve() {
+            let tbl = document.getElementById("tbl").deleteRow(0);
+        }
+        function add_col() {
+            var table = document.getElementById("tbl");
+            for (let i = 0; i < table.rows.length; i++) {
+                let r = table.rows[i];
+                r.insertCell(0);
+            }
+        }
+        function col_red_eve(){
+            var table = document.getElementById("tbl"); 
+            for(let i=0;i<table.rows.length; i++){
+                let r = table.rows[i];
+                r.deleteCell(0);
+            }
+        }
+    </script>
+</body>
+</html>

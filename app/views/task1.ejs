@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Java Script Events</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    th,
+    td {
+        padding: 15px;
+    }
+
+    .col {
+        color: gray;
+        background-color: #aed6f1;
+
+
+
+    }
+
+    .change {
+        color: gray;
+        background-color: #d6eaf8;
+
+    }
+
+    .scroll {
+        border: 1px solid black;
+        width: 200px;
+        height: 100px;
+        overflow: scroll;
+    }
+</style>
+
+<body onunload="onunload_eve()">
+    <script>
+        function clickevent() {
+            alert("Onclick() event fired !");
+        }
+
+        function mouseover() {
+            alert("Onmouseover() event fired !");
+        }
+        function mouseout() {
+            alert("Onmouseout() event fired !");
+        }
+        function mousedown() {
+            alert("Onmousedown() event fired !");
+        }
+        function mouseup() {
+            alert("Onmouseup() event fired !");
+        }
+        function mousemove() {
+            alert("Onmousemove() event fired !");
+        }
+        function keyup() {
+            alert("Onkeyup() event fired !");
+        }
+        function keydown() {
+            alert("Onkeydown() event fired !");
+        }
+        function onfocus_eve() {
+            alert("Onfocus() event fired !");
+        }
+        function onblur_eve() {
+            alert("Onblur() event fired !");
+        }
+        function onchange_eve() {
+            alert("Onchange() event fired !");
+        }
+        function ondbclick_eve() {
+            alert("Ondoubleclick() event fired !");
+        }
+        function oncopy_eve() {
+            alert("Oncopy() event fired !");
+        }
+        function onsubmit_eve() {
+            alert("Onsubmit() event fired !");
+        }
+        function oninput_eve() {
+            alert("Oninput() event fired !");
+        }
+        function onreset_eve() {
+            alert("Onreset() event fired !");
+        }
+        function onerror_eve() {
+            alert("Onerror() event fired !");
+        }
+        function onunload_eve() {
+            alert("Onunload() event fired !");
+        }
+        function onpaste_eve() {
+            alert("Onpaste() event fired !");
+        }
+        function onscroll_eve() {
+            alert("Onscroll() event fired !");
+        }
+
+    </script>
+    <form action="#" onsubmit="onsubmit_eve()" onreset="onreset_eve()">
+        <table style="height: 70%;width: 70%;border-spacing: 5px;">
+            <tr>
+                <td class="change">
+                    <h3>Onclick()</h3>
+                    <input type="button" onclick="clickevent()" value="Click here" />
+                </td>
+                <td class="col">
+                    <h3>Onmouseover()</h3>
+                    <p onmouseover="mouseover()">Keep cursor over me !</p>
+                </td>
+                <td class="change">
+                    <h3>Onmouseout()</h3>
+                    <p onmouseout="mouseout()">Check Onmouseout event</p>
+                </td>
+                <td class="col">
+                    <h3>Onmousedown()</h3>
+                    <p onmousedown="mousedown()">Check Onmousedown event</p>
+                </td>
+                <td class="change">
+                    <h3>Onerror_eve()</h3>
+                    <img src="img.png" onerror="onerror_eve()">
+                </td>
+            </tr>
+            <tr>
+                <td class="col">
+                    <h3>Onmouseup()</h3>
+                    <p onmouseup="mouseup()">Check Onmouseup event</p>
+                </td>
+                <td class="change">
+                    <h3>Onmousemove()</h3>
+                    <p onmouseup="mousemove()">Check Onmousemove event</p>
+                </td>
+                <td class="col">
+                    <h3>Onkeyup()</h3>
+                    <input type="text" placeholder="Enter any key" onkeyup="keyup()">
+                </td>
+                <td class="change">
+                    <h3>Onkeydown()</h3>
+                    <input type="text" placeholder="Enter any key" onkeydown="keydown()">
+                </td>
+                <td class="col">
+                    <h3>OnUnload()</h3>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="change">
+                    <h3>Onfocus()</h3>
+                    <input type="text" onfocus="onfocus_eve()" placeholder="focus here">
+                </td class="col">
+                <td class="col">
+                    <h3>Onblur()</h3>
+                    <input type="text" onblur="onblur_eve()" placeholder="focus and leave">
+                </td>
+                <td class="change">
+                    <h3>Onchange()</h3>
+                    <label for="gender">Gender</label><br>
+                    Male<input type="radio" onchange="onchange_eve()" name="gender">
+                    Female<input type="radio" onchange="onchange_eve()" name="gender">
+                <td class="col">
+                    <h3>Ondoubleclick()</h3>
+                    <p ondblclick="ondbclick_eve()">Click me Twice</p>
+                </td>
+                <td class="change">
+                    <h3>Onpaste()</h3>
+                    <input type="text" onpaste="onpaste_eve()" value="Try to paste something in here" size="40">
+                </td>
+            </tr>
+            <tr>
+                <td class="col">
+                    <h3>Oncopy()</h3>
+                    <p oncopy="oncopy_eve()">Try to copy me</p>
+                </td>
+                <td class="change">
+                    <h3>Onsubmit</h3>
+                    <input type="text" placeholder="Enter something"><br>
+                    <input type="submit" value="submit">
+                </td>
+                <td class="col">
+                    <h3>Oninput</h3>
+                    <input type="text" oninput="oninput_eve()" placeholder="Enter something">
+
+                </td>
+                <td class="change">
+                    <h3>Onreset</h3>
+                    <input type="text" oninput="oninput_eve()" placeholder="Enter something">
+                    <input type="reset">
+                </td>
+                <td class="col">
+                    <h3>Onscroll</h3>
+                    <p class="scroll" onscroll="onscroll_eve()">In my younger and more vulnerable years my father gave
+                        me some advice that I've been turning over in my mind ever since.
+                        <br><br>
+                        'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in
+                        this world haven't had the advantages that you've had.'</div>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

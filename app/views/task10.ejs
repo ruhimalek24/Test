@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>STUDENT TABLE </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    .container {
+        display: flex;
+        gap: 20px;
+        margin-left: 400px;
+    }
+
+    .number {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 5px;
+        font-size: 16px;
+        background-color: lightcyan;
+        border-radius: 5px;
+    }
+
+    table,
+    th,
+    td {
+        /* border: 1px solid black; */
+        border-collapse: collapse;
+        text-align: center;
+        padding: 5px;
+        font-size: 18px;
+        margin-top: 30px;
+    }
+
+    th {
+        background-color: lightcyan;
+        /* display: flex; */
+        width: 150px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>Student Data</h1>
+    
+    <div class="container">
+
+        <button class="btn" id="beg" onclick="beg()">
+            << </button>
+
+                <button class="btn" id="back" onclick="back()">
+                    < </button>
+
+                        <div class="no">
+                            <span class="number" id="number">
+                                <%= page %>
+                            </span>
+                        </div>
+
+                        <button class="btn" id="next" onclick="next()"> > </button>
+
+                        <button class="btn" id="end" onclick="end()"> >> </button>
+
+    </div>
+    
+    <table>
+        <thead>
+            <th>Id <br>
+                <button class="btna" id="idacc" onclick="asc('student_id')"> \/ </button>
+                <button class="btna" id="iddsc" onclick="dsc('student_id')"> /\ </button>
+            </th>
+            <th>First name <br>
+                <button class="btna" id="fnameacc" onclick="asc('fname')"> \/</button>
+                <button class="btna" id="fnamedsc" onclick="dsc('fname')"> /\</button>
+            </th>
+            <th>Last name <br>
+                <button class="btna" id="lnameacc" onclick="asc('lname')"> \/</button>
+                <button class="btna" id="lnameacc" onclick="dsc('lname')"> /\</button>
+            </th>
+            <th>Age <br>
+                <button class="btna" id="ageacc" onclick="asc('age')"> \/</button>
+                <button class="btna" id="agedsc" onclick="dsc('age')"> /\</button>
+            </th>
+            <th>Date of birth <br>
+                <button class="btna" id="dobacc" onclick="asc('bdate')"> \/</button>
+                <button class="btna" id="dobdsc" onclick="dsc('bdate')"> /\</button>
+            </th>
+            <th>Email <br>
+                <button class="btna" id="emailacc" onclick="asc('email')"> \/</button>
+                <button class="btna" id="emaildsc" onclick="dsc('email')"> /\</button>
+            </th>
+            <th>City <br>
+                <button class="btna" id="cityacc" onclick="asc('city')"> \/</button>
+                <button class="btna" id="citydsc" onclick="dsc('city')"> /\</button>
+            </th>
+            <th>Date of admission <br>
+                <button class="btna" id="addacc" onclick="asc('admission_date')"> \/</button>
+                <button class="btna" id="adddsc" onclick="dsc('admission_date')"> /\</button>
+            </th>
+            <th>Semester <br>
+                <button class="btna" id="semacc" onclick="asc('semester')"> \/</button>
+                <button class="btna" id="semdsc" onclick="dsc('semester')"> /\</button>
+            </th>
+            <th>Created Date <br>
+                <button class="btna" id="dateacc" onclick="asc('created_at')"> \/</button>
+                <button class="btna" id="datedsc" onclick="dsc('created_at')"> /\</button>
+            </th>
+        </thead>
+        <tbody id="tbody">
+            <% data.forEach(i=> { %>
+                <tr>
+                    <td>
+                        <%= i.student_id %>
+                    </td>
+                    <td>
+                        <%= i.fname %>
+                    </td>
+                    <td>
+                        <%= i.lname %>
+                    </td>
+                    <td>
+                        <%= i.age %>
+                    </td>
+                    <td>
+                        <%= i.bdate %>
+                    </td>
+                    <td>
+                        <%= i.email %>
+                    </td>
+                    <td>
+                        <%= i.city %>
+                    </td>
+                    <td>
+                        <%= i.admission_date %>
+                    </td>
+                    <td>
+                        <%= i.semester %>
+                    </td>
+                    <td>
+                        <%= i.created_at %>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+    <script>
+
+        var begbtn = document.getElementById("beg");
+        var endbtn = document.getElementById("end");
+        var backButton = document.getElementById("back");
+        var nextButton = document.getElementById("next");
+        var number = document.getElementById("number");
+        var cityacc = document.getElementById("cityacc");
+
+        var i = 1;
+
+        function ready() {
+            backButton.disabled = true;
+        }
+
+        function next() {
+            let pg = <%= page %> ;
+            pg++;
+            if (pg == 1000) {
+                nextButton.disabled = true;
+            }
+            backButton.disabled = false;
+            number.innerHTML = pg;
+            loaddata(pg);
+            return pg;
+        }
+
+        function back() {
+            let pg = <%= page %> ;
+            pg--;
+            if (pg <= 1) {
+                backButton.disabled = true;
+            }
+            nextButton.disabled = false;
+            number.innerHTML = pg;
+            loaddata(pg);
+
+        }
+
+        function beg() {
+            // console.log(1);
+            let pg = <%= page %> ;
+            if (pg == 1) {
+                backButton.disabled = true;
+            }
+            pg = 1;
+            number.innerHTML = pg;
+            nextButton.disabled = false;
+            loaddata(pg);
+
+        }
+
+        function end() {
+            let pg = <%= page %> ;
+            if (pg == 10000) {
+                nextButton.disabled = true;
+            }
+            pg = 1000;
+            document.getElementById('number').innerHTML = 1000;
+            nextButton.disabled = true;
+            loaddata(pg);
+
+        }
+        function loaddata(pg) {
+            window.location.href = '/task10?page=' + pg ;
+            // console.log(page);
+        }
+        function asc(value) {
+            window.location.href = `/task10?page=1&obf=${value}&order=asc`;
+        }
+        function dsc(value) {
+            window.location.href = `/task10?page=1&obf=${value}&order=desc`;
+        }
+    </script>
+</body>
+
+</html>

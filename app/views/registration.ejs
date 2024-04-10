@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            width: 600px;
+            margin: 34px auto -34px;
+            border: 1px solid rgb(235, 238, 241);
+            padding: 10px;
+            box-shadow: 5px 5px lightblue;
+        }
+
+        .title h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 43px;
+            color: steelblue;
+            font-family: Arial, Helvetica, sans-serif;            
+        }      
+
+        .first label,
+        .last label,
+        .email label,
+        .pass label,
+        .cpass label {     
+            font-size: 22px;           
+        }
+
+        .first input,
+        .last input,
+        .email input,
+        .pass input,
+        .cpass input {
+            width: 90%;
+            height: 33px;
+            margin: 11px 0 3px 0;           
+            padding: 0 0 0 10px;
+            background-color: rgb(221, 233, 247);
+            border: none;
+            padding: 10px;
+        }
+
+        .submit {
+            margin: 0 0 0 19px;
+        }
+
+        .submit input[type="submit"] {
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 5px;
+            font-size: 22px;
+           margin-top: 10px;            
+            text-align: center;
+            padding: 10px;          
+        }
+
+        .submit input[type="submit"]:hover {
+            background-color: #D8D8D8;
+        }
+
+        form {
+            padding-left: 35px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Name:Ruhi Malek | Id : 24DEV050</h3>
+      
+    
+            <div class="title">
+                <h1>Sign up</h1>
+            </div>       
+    
+    <div class="content">
+        <div class="container">
+            <form action="/submit" method="post" id="form">
+                <div class="first">
+                    <label for="userName">User name:</label>
+                    <div class="clear"></div>
+                    <input type="text" name="user_name" id="user_name" placeholder="Enter first name" required>
+                    
+                </div>
+                <% var err = err || null %>
+                <div class="email">
+                    <label for="email">E-mail:</label>                    
+                    <input type="email" name="email" id="email" placeholder="Enter email" required>
+                    
+                </div>
+                <div class="pass">
+                    <label for="pass">Password:</label>
+                   
+                    <input type="password" name="pswrd1" id="pswrd1" placeholder="Enter password" required>
+                </div>
+                <div class="cpass">
+                    <label for="Cpass">Confirm password:</label>
+                    
+                    <input type="password" name="pswrd" id="pswrd" placeholder="Esnter again password" required>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Sign up">
+                </div>
+            </form>
+        </div>
+    </div>
+<script>
+    const form = document.getElementById('form');
+        form.addEventListener("submit", async (event) => {
+            const formData = new formData(form);
+            const url = form.action;
+            try {
+                const response = await fetch(url, {
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(fsormData)
+                });
+                const result = await response.json();
+                console.log(result);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        })
+        var email = document.getElementById('email');
+
+</script>
+
+</body>
+
+</html>
